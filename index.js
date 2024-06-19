@@ -21,6 +21,31 @@ app.get("/produtos/camisetas", (req, res) => {
     res.send('Página Camisetas')
 })
 
+app.get("/ola/:nome", (req, res) => {
+    //REQ => DADOS ENVIADOS PELO CLIENTE
+    //RES => DADOS ENVIADOS PELO SERVIDOR
+    let nome = req.params.nome
+    res.send(`<h1>Ola ${nome}</h1>`)
+})
+
+app.get("/ola/:nome/:empresa", (req, res) => {
+    //REQ => DADOS ENVIADOS PELO CLIENTE
+    //RES => DADOS ENVIADOS PELO SERVIDOR
+    let nome = req.params.nome
+    let empresa = req.params.empresa
+    res.send(`<h1>Ola ${nome} da empresa ${empresa}</h1>`)
+})
+
+app.get("/blog/:artigo?", (req, res) => {
+    let artigo = req.params.artigo
+    if (artigo) {
+        res.send(`<h1>Artigo: ${artigo}</h1>`)
+    } else {
+        res.send('<h1>Blog</h1>')
+    }
+})
+
+
 
 app.listen(3000, (erro) =>{
     if (erro) {
